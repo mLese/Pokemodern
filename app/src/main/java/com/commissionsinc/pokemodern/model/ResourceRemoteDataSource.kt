@@ -3,8 +3,8 @@ package com.commissionsinc.pokemodern.model
 import android.os.Handler
 
 
-class ResourceRemoteDataSource {
-    fun getResourceList(callback: (ResourceList) -> Unit) {
+class ResourceRemoteDataSource : RemoteResourceDataSource{
+    override fun getResourceList(callback: (ResourceList) -> Unit) {
         val resources = listOf(
                 Resource("bulbasaur", "https://pokeapi.co/api/v2/pokemon/1/"),
                 Resource("ivysaur", "https://pokeapi.co/api/v2/pokemon/2/"),

@@ -6,10 +6,11 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
+import com.commissionsinc.pokemodern.PokemodernApplication
 import com.commissionsinc.pokemodern.R
 import com.commissionsinc.pokemodern.databinding.ActivityMainBinding
 import com.commissionsinc.pokemodern.viewmodel.MainViewModel
+import com.commissionsinc.pokemodern.viewmodel.MainViewModelFactory
 
 class MainActivity : AppCompatActivity(), ResourceRecyclerViewAdapter.OnItemClickListener {
 
@@ -19,8 +20,13 @@ class MainActivity : AppCompatActivity(), ResourceRecyclerViewAdapter.OnItemClic
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val app = application as PokemodernApplication
+        val appComponent = app.appComponent
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        val viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
+        val factory = MainViewModelFactory(appComponent)
+        val viewModel = ViewModelProviders.of(this, factory).get(MainViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.executePendingBindings()
@@ -34,7 +40,6 @@ class MainActivity : AppCompatActivity(), ResourceRecyclerViewAdapter.OnItemClic
     }
 
     override fun onItemClick(position: Int) {
-        Log.d("Lese", "Clicked Position $position")
         val resource = resourceRecyclerViewAdapter.getResource(position)
         resource.let {
             it.favorited = !it.favorited
