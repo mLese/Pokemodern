@@ -11,22 +11,25 @@ import com.commissionsinc.pokemodern.R
 import com.commissionsinc.pokemodern.databinding.ActivityMainBinding
 import com.commissionsinc.pokemodern.viewmodel.MainViewModel
 import com.commissionsinc.pokemodern.viewmodel.MainViewModelFactory
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), ResourceRecyclerViewAdapter.OnItemClickListener {
 
     lateinit var binding : ActivityMainBinding
     private val resourceRecyclerViewAdapter = ResourceRecyclerViewAdapter(arrayListOf(), this)
 
+    @Inject
+    lateinit var viewModelFactory: MainViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val app = application as PokemodernApplication
-        val appComponent = app.appComponent
+        app.appComponent.mainComponent().inject(this)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val factory = MainViewModelFactory(appComponent)
-        val viewModel = ViewModelProviders.of(this, factory).get(MainViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.executePendingBindings()

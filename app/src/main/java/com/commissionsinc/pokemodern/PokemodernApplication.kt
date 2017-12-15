@@ -1,10 +1,7 @@
 package com.commissionsinc.pokemodern
 
 import android.app.Application
-import com.commissionsinc.pokemodern.di.AppComponent
-import com.commissionsinc.pokemodern.di.AppModule
-import com.commissionsinc.pokemodern.di.DaggerAppComponent
-import com.commissionsinc.pokemodern.di.NetworkUtilityModule
+import com.commissionsinc.pokemodern.di.*
 
 
 class PokemodernApplication : Application() {
@@ -16,11 +13,7 @@ class PokemodernApplication : Application() {
         appComponent = DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .networkUtilityModule(NetworkUtilityModule())
+                .retrofitModule(RetrofitModule("http://pokeapi.co"))
                 .build()
-        /*
-        appComponent = DaggerAppComponent.builder()
-                .appModule(this)
-                .build()
-                */
     }
 }

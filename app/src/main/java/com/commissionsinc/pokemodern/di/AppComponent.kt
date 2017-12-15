@@ -1,9 +1,10 @@
 package com.commissionsinc.pokemodern.di
 
-import com.commissionsinc.pokemodern.viewmodel.MainViewModel
 import dagger.Component
+import javax.inject.Singleton
 
-@Component(modules = [AppModule::class, NetworkUtilityModule::class, ResourceRepositoryModule::class])
+@Singleton
+@Component(modules = [AppModule::class, NetworkUtilityModule::class, RetrofitModule::class])
 interface AppComponent {
-    fun inject(viewModel: MainViewModel)
+    fun mainComponent(): MainComponent
 }
