@@ -13,7 +13,7 @@ class PokemodernApplication : Application() {
         appComponent = DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .networkUtilityModule(NetworkUtilityModule())
-                .retrofitModule(RetrofitModule("http://pokeapi.co"))
+                .retrofitModule(RetrofitModule())
                 .build()
     }
 }

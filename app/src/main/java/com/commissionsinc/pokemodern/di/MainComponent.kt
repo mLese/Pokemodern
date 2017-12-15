@@ -4,7 +4,7 @@ import com.commissionsinc.pokemodern.view.MainActivity
 import dagger.Subcomponent
 
 
-@Subcomponent(modules = [ResourceRepositoryModule::class, MainModule::class])
+@Subcomponent(modules = [MainModule::class])
 interface MainComponent {
     fun inject(mainActivity: MainActivity)
 }

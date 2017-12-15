@@ -1,6 +1,7 @@
 package com.commissionsinc.pokemodern.di
 
 import android.app.Application
+import com.commissionsinc.pokemodern.model.api.BaseUrl
 import com.commissionsinc.pokemodern.model.api.ResourceService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -16,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 
-@Module class RetrofitModule(val baseUrl: String) {
+@Module class RetrofitModule() {
 
     @Provides
     @Singleton
@@ -55,10 +56,10 @@ import javax.inject.Singleton
 
     @Provides
     @Singleton
-    fun provideRetrofit(gson: Gson, client: OkHttpClient): Retrofit {
+    fun provideRetrofit(gson: Gson, client: OkHttpClient, baseUrl: BaseUrl): Retrofit {
         return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl(baseUrl)
+                .baseUrl(baseUrl.baseUrl)
                 .client(client)
                 .build()
     }
