@@ -3,7 +3,6 @@ package com.commissionsinc.pokemodern.viewmodel
 import android.app.Application
 import android.arch.lifecycle.*
 import android.databinding.ObservableField
-import android.util.Log
 import com.commissionsinc.pokemodern.model.Resource
 import com.commissionsinc.pokemodern.model.ResourceRepository
 import com.commissionsinc.pokemodern.util.NetManager

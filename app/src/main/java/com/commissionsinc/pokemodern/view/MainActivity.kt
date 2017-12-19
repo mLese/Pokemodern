@@ -6,7 +6,6 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import com.commissionsinc.pokemodern.R
 import com.commissionsinc.pokemodern.databinding.ActivityMainBinding
 import com.commissionsinc.pokemodern.viewmodel.MainViewModel
