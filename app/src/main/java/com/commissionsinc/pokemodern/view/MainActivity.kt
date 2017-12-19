@@ -28,13 +28,13 @@ class MainActivity : AppCompatActivity(), ResourceRecyclerViewAdapter.OnItemClic
         binding.resourceRv.layoutManager = LinearLayoutManager(this)
         binding.resourceRv.adapter = resourceRecyclerViewAdapter
 
+        lifecycle.addObserver(viewModel)
+
         viewModel.resourceList.observe(this,
                 Observer { it?.let { resourceRecyclerViewAdapter.replaceData(it) }})
-
     }
 
     override fun onItemClick(position: Int) {
-        Log.d("Lese", "Clicked Position $position")
         val resource = resourceRecyclerViewAdapter.getResource(position)
         resource.let {
             it.favorited = !it.favorited
