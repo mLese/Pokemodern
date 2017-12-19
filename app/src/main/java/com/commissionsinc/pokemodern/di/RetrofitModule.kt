@@ -12,18 +12,17 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 
-@Module class RetrofitModule() {
+@Module class RetrofitModule {
 
     @Provides
     @Singleton
     fun provideOkHttpCache(application: Application) : Cache {
         val cacheSize: Long = 10 * 1024 * 1024
-        return Cache(application.getCacheDir(), cacheSize)
+        return Cache(application.cacheDir, cacheSize)
     }
 
     @Provides
@@ -48,7 +47,7 @@ import javax.inject.Singleton
     fun provideOkHttpClient(cache: Cache, interceptor: Interceptor): OkHttpClient {
         val builder = OkHttpClient.Builder()
         val logger = HttpLoggingInterceptor()
-        logger.setLevel(HttpLoggingInterceptor.Level.BODY)
+        logger.level = HttpLoggingInterceptor.Level.BODY
         return builder.cache(cache)
                 .addInterceptor(interceptor)
                 .build()
