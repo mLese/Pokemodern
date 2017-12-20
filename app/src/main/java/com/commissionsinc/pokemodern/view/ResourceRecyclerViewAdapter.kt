@@ -37,8 +37,8 @@ class ResourceRecyclerViewAdapter(private var items: List<Resource>,
             binding.apply {
                 resource = res
                 number.text = "#" + String.format("%03d", layoutPosition)
-                binding.favorite.setOnClickListener({ _ -> listener.onItemClick(layoutPosition)})
-                binding.notFavorite.setOnClickListener({ _ -> listener.onItemClick(layoutPosition)})
+                favorite.setOnClickListener({ _ -> listener.onItemClick(layoutPosition)})
+                notFavorite.setOnClickListener({ _ -> listener.onItemClick(layoutPosition)})
                 executePendingBindings()
             }
         }
