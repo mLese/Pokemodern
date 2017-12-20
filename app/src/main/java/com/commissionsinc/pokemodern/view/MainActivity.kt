@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity(), ResourceRecyclerViewAdapter.OnItemClic
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
 
         binding.viewModel = viewModel
-        binding.executePendingBindings()
 
         binding.resourceRv.layoutManager = LinearLayoutManager(this)
         binding.resourceRv.adapter = resourceRecyclerViewAdapter
