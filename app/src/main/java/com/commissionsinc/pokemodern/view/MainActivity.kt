@@ -1,5 +1,6 @@
 package com.commissionsinc.pokemodern.view
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity(), ResourceRecyclerViewAdapter.OnItemClic
         // set our view model object in our binding so we can update our view states
         binding.viewModel = viewModel
 
-        // obtain recycler view from binding, no need to "findResourceById" with data binding
+        // obtain recycler view from binding, no need to "findViewById" with data binding
         binding.resourceRv.layoutManager = LinearLayoutManager(this)
         binding.resourceRv.adapter = resourceRecyclerViewAdapter
 

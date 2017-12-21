@@ -46,7 +46,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application), L
     // LifecycleObserver implementation to fetch list when LifecycleOwner enters the "created" state
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun initialLoad() {
-        // If we have no reasource list
+        // If we have no resource list
         if (resourceList.value == null) {
             loadResources()
         } else {
